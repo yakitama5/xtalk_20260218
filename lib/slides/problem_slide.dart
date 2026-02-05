@@ -11,137 +11,172 @@ class ProblemSlide extends FlutterDeckSlideWidget {
         configuration: const FlutterDeckSlideConfiguration(
           route: '/problem',
           title: 'Problem',
-          steps: 2, // アニメーションステップ
+          steps: 3, // アニメーションステップを3に変更
         ),
       );
 
   @override
   FlutterDeckSlide build(BuildContext context) {
-    return FlutterDeckSlide.split(
-      splitRatio: SplitSlideRatio(left: 5, right: 4),
-      leftBuilder: (context) {
+    return FlutterDeckSlide.custom(
+      builder: (context) {
         return FlutterDeckSlideStepsBuilder(
           builder: (context, stepNumber) {
-            return AnimatedOpacity(
-              duration: const Duration(milliseconds: 500),
-              opacity: stepNumber >= 1 ? 1.0 : 0.0,
-              child: const Padding(
-                padding: EdgeInsets.all(32),
-                child: Center(
-                  child: SizedBox(height: 500, child: FigmaMockupWidget()),
+            // ステップごとの状態
+            final isZoomed = stepNumber == 1;
+            final showSplit = stepNumber >= 2;
+            final showProblems = stepNumber >= 3;
+
+            return Stack(
+              children: [
+                // 背景 (左右分割のガイドライン的なもの)
+                if (showSplit)
+                  Row(
+                    children: [
+                      Expanded(flex: 5, child: Container()),
+                      const VerticalDivider(color: Colors.white24, width: 1),
+                      Expanded(flex: 4, child: Container()),
+                    ],
+                  ),
+
+                // 左側: Figma Mockup (ズームアニメーション付き)
+                AnimatedAlign(
+                  duration: const Duration(milliseconds: 800),
+                  curve: Curves.easeInOutCubic,
+                  alignment: isZoomed
+                      ? Alignment.center
+                      : const Alignment(-0.8, 0),
+                  child: AnimatedScale(
+                    duration: const Duration(milliseconds: 800),
+                    curve: Curves.easeInOutCubic,
+                    scale: isZoomed ? 1.4 : 1.0,
+                    child: SizedBox(
+                      width: 600,
+                      height: 500,
+                      child: const FigmaMockupWidget(),
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
-        );
-      },
-      rightBuilder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'よくあるUI仕様',
-                style: GoogleFonts.notoSansJp(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: PresentationTheme.primaryColor,
-                ),
-              ),
-              const Gap(24),
-              _buildBulletPoint(context, '「一覧画面、デフォルトでStatus順ね」', delay: 1),
-              const Gap(16),
-              _buildBulletPoint(context, '「ページネーションも必須で」', delay: 1),
-              const Gap(48),
-              FlutterDeckSlideStepsBuilder(
-                builder: (context, stepNumber) {
-                  return AnimatedOpacity(
+
+                // 右側: 問題提示
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: MediaQuery.of(context).size.width * 0.44, // flex 4相当
+                  child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
-                    opacity: stepNumber >= 2 ? 1.0 : 0.0,
-                    child: Container(
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: PresentationTheme.warningColor.withValues(
-                          alpha: 0.1,
-                        ),
-                        border: Border(
-                          left: BorderSide(
-                            color: PresentationTheme.warningColor,
-                            width: 4,
-                          ),
-                        ),
-                      ),
+                    opacity: showSplit ? 1.0 : 0.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(48.0),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.warning_amber,
-                                color: PresentationTheme.warningColor,
-                              ),
-                              const Gap(12),
-                              Text(
-                                '隠されたコスト',
-                                style: GoogleFonts.notoSansJp(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: PresentationTheme.warningColor,
+                          Text(
+                            'よくあるUI仕様',
+                            style: GoogleFonts.notoSansJp(
+                              fontSize: 36,
+                              fontWeight: FontWeight.bold,
+                              color: PresentationTheme.primaryColor,
+                            ),
+                          ),
+                          const Gap(32),
+                          _buildPoint(
+                            context,
+                            '「一覧画面、デフォルトでStatus順ね」',
+                            isVisible: showSplit,
+                          ),
+                          const Gap(20),
+                          _buildPoint(
+                            context,
+                            '「ページネーションも必須で」',
+                            isVisible: showSplit,
+                          ),
+                          const Gap(48),
+                          AnimatedOpacity(
+                            duration: const Duration(milliseconds: 500),
+                            opacity: showProblems ? 1.0 : 0.0,
+                            child: Container(
+                              padding: const EdgeInsets.all(24),
+                              decoration: BoxDecoration(
+                                color: PresentationTheme.warningColor
+                                    .withValues(alpha: 0.1),
+                                border: const Border(
+                                  left: BorderSide(
+                                    color: PresentationTheme.warningColor,
+                                    width: 4,
+                                  ),
                                 ),
                               ),
-                            ],
-                          ),
-                          const Gap(16),
-                          Text(
-                            'Statusは計算フィールド...\nDBインデックスが効かない！？',
-                            style: GoogleFonts.notoSansJp(
-                              fontSize: 20,
-                              height: 1.5,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.warning_amber,
+                                        color: PresentationTheme.warningColor,
+                                      ),
+                                      const Gap(12),
+                                      Text(
+                                        '隠されたコスト',
+                                        style: GoogleFonts.notoSansJp(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          color: PresentationTheme.warningColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Gap(16),
+                                  Text(
+                                    'Statusは計算フィールド...\nDBインデックスが効かない！？',
+                                    style: GoogleFonts.notoSansJp(
+                                      fontSize: 20,
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  );
-                },
-              ),
-            ],
-          ),
+                  ),
+                ),
+              ],
+            );
+          },
         );
       },
     );
   }
 
-  Widget _buildBulletPoint(
+  Widget _buildPoint(
     BuildContext context,
     String text, {
-    required int delay,
+    required bool isVisible,
   }) {
-    return FlutterDeckSlideStepsBuilder(
-      builder: (context, stepNumber) {
-        return AnimatedOpacity(
-          duration: const Duration(milliseconds: 500),
-          opacity: stepNumber >= delay ? 1.0 : 0.0,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Icon(
-                  Icons.arrow_right,
-                  color: PresentationTheme.secondaryTextColor,
-                ),
-              ),
-              const Gap(8),
-              Expanded(
-                child: Text(text, style: GoogleFonts.notoSansJp(fontSize: 24)),
-              ),
-            ],
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 500),
+      opacity: isVisible ? 1.0 : 0.0,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: Icon(
+              Icons.arrow_right,
+              color: PresentationTheme.secondaryTextColor,
+            ),
           ),
-        );
-      },
+          const Gap(8),
+          Expanded(
+            child: Text(text, style: GoogleFonts.notoSansJp(fontSize: 24)),
+          ),
+        ],
+      ),
     );
   }
 }

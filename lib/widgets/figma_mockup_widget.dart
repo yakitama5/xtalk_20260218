@@ -62,9 +62,14 @@ class FigmaMockupWidget extends StatelessWidget {
             ),
           ),
           // Data Rows
-          ...List.generate(5, (index) => _buildRow(index)),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: List.generate(10, (index) => _buildRow(index)),
+              ),
+            ),
+          ),
           // Pagination Footer
-          const Spacer(),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: const BoxDecoration(

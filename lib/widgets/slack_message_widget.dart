@@ -1,0 +1,125 @@
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class SlackMessageWidget extends StatelessWidget {
+  final String text;
+  final bool isMe;
+  final bool isTyping;
+
+  final List<ReactionData> reactions;
+
+  const SlackMessageWidget({
+    super.key,
+    required this.text,
+    required this.isMe,
+    this.isTyping = false,
+    this.reactions = const [],
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (isTyping) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        child: Text(
+          '入力中...',
+          style: GoogleFonts.notoSansJp(color: Colors.grey, fontSize: 12),
+        ),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Avatar
+          Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              color: isMe ? const Color(0xFF1976D2) : const Color(0xFFE91E63),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            alignment: Alignment.center,
+            child: Icon(
+              isMe ? Icons.person : Icons.support_agent,
+              color: Colors.white,
+              size: 20,
+            ),
+          ),
+          const Gap(12),
+          // Content
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      isMe ? 'Me' : 'Product Manager',
+                      style: GoogleFonts.notoSansJp(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const Gap(8),
+                    Text(
+                      '10:23 AM',
+                      style: GoogleFonts.roboto(
+                        fontSize: 12,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+                const Gap(4),
+                Text(
+                  text,
+                  style: GoogleFonts.notoSansJp(
+                    fontSize: 15,
+                    color: Colors.black87,
+                    height: 1.4,
+                  ),
+                ),
+                if (reactions.isNotEmpty) ...[
+                  const Gap(4),
+                  Wrap(
+                    spacing: 4,
+                    children: reactions
+                        .map((r) => _buildReaction(r.emoji, r.count))
+                        .toList(),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReaction(String emoji, int count) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF2F2F2),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white, width: 1),
+      ),
+      child: Text(
+        '$emoji $count',
+        style: const TextStyle(fontSize: 12, color: Colors.black),
+      ),
+    );
+  }
+}
+
+class ReactionData {
+  final String emoji;
+  final int count;
+
+  const ReactionData(this.emoji, this.count);
+}
