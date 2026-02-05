@@ -49,9 +49,9 @@ class FigmaMockupWidget extends StatelessWidget {
             ),
             child: Row(
               children: [
-                _buildCell('ID', width: 60, isHeader: true),
-                _buildCell('Name', flex: 2, isHeader: true),
-                _buildCell('CreatedAt', flex: 2, isHeader: true),
+                _buildCell('ID ▼', width: 60, isHeader: true),
+                _buildCell('Name ▼', flex: 2, isHeader: true),
+                _buildCell('CreatedAt ▼', flex: 2, isHeader: true),
                 _buildCell(
                   'Status ▼',
                   flex: 1,

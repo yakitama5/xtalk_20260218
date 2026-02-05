@@ -56,19 +56,13 @@ class _InteractiveChatSlideState extends State<InteractiveChatSlide> {
                         ),
                         const SizedBox(height: 32),
                         Text(
-                          '実装する前に\nチャット一本で解決することも。',
+                          '実装する前に\nチャット一本で解決するかも...？',
                           style: GoogleFonts.notoSansJp(
                             fontSize: 28,
                             color: Colors.white,
                             height: 1.5,
                           ),
                         ),
-                        const SizedBox(height: 48),
-                        _buildFeatureRow(Icons.chat, '仕様の意図を確認'),
-                        const SizedBox(height: 16),
-                        _buildFeatureRow(Icons.money_off, '不要な開発コスト ¥0'),
-                        const SizedBox(height: 16),
-                        _buildFeatureRow(Icons.thumb_up, 'エンジニアの信頼度 UP'),
                         const SizedBox(height: 32),
                         Container(
                           padding: const EdgeInsets.all(16),
