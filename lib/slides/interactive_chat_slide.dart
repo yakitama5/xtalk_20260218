@@ -240,8 +240,8 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
           Container(
             color: slackAppBarColor,
             padding: const EdgeInsets.only(
-              top: 40,
-              bottom: 10,
+              top: 50,
+              bottom: 12,
               left: 16,
               right: 16,
             ),
@@ -254,7 +254,7 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
                       Text(
                         '# project-x-design',
                         style: GoogleFonts.notoSansJp(
-                          fontSize: 16,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -262,7 +262,7 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
                     ],
                   ),
                 ),
-                const Icon(Icons.info_outline, color: Colors.white),
+                const Icon(Icons.info_outline, color: Colors.white, size: 28),
               ],
             ),
           ),
@@ -270,7 +270,7 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
-              padding: const EdgeInsets.only(top: 8, bottom: 16),
+              padding: const EdgeInsets.only(top: 10, bottom: 20),
               itemCount: _messages.length + (_isTyping ? 1 : 0),
               itemBuilder: (context, index) {
                 if (index == _messages.length && _isTyping) {
@@ -286,7 +286,7 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
           ),
           // Input Area
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             decoration: const BoxDecoration(
               color: Colors.white,
               border: Border(top: BorderSide(color: Colors.grey, width: 0.5)),
@@ -294,38 +294,41 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
             child: Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(6),
                   ),
-                  child: const Icon(Icons.add, color: Colors.grey, size: 20),
+                  child: const Icon(Icons.add, color: Colors.grey, size: 24),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 12),
                 Expanded(
                   child: TextField(
                     controller: _textController,
                     decoration: InputDecoration(
                       hintText: 'Message #project-x-design',
-                      hintStyle: GoogleFonts.roboto(color: Colors.grey),
+                      hintStyle: GoogleFonts.roboto(
+                        color: Colors.grey,
+                        fontSize: 18,
+                      ),
                       contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
+                        horizontal: 14,
+                        vertical: 12,
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4),
+                        borderRadius: BorderRadius.circular(6),
                         borderSide: BorderSide(color: Colors.grey[400]!),
                       ),
                       isDense: true,
                     ),
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black, fontSize: 18),
                     onSubmitted: (_) => _handleSend(),
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 12),
                 IconButton(
                   onPressed: _handleSend,
-                  icon: const Icon(Icons.send),
+                  icon: const Icon(Icons.send, size: 28),
                   color: const Color(0xFF007A5A), // Slack Green
                   tooltip: '送信',
                 ),

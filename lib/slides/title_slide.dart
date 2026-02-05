@@ -53,7 +53,7 @@ class TitleSlide extends FlutterDeckSlideWidget {
                     const Gap(32),
                     // 要件2.2
                     Text(
-                      'ユーザーニーズのない機能に全力投球しないための防衛術',
+                      'ユーザーニーズのない機能に全力投球しないために',
                       style: GoogleFonts.notoSansJp(
                         fontSize: 32,
                         fontWeight: FontWeight.w500,
@@ -86,7 +86,7 @@ class TitleSlide extends FlutterDeckSlideWidget {
                           ),
                           const Gap(12),
                           Text(
-                            'Presenter Name',
+                            'やくらん',
                             style: GoogleFonts.notoSansJp(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,

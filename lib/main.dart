@@ -3,6 +3,7 @@ import 'package:flutter_deck/flutter_deck.dart';
 import 'package:xtalk_20260218/config/theme.dart';
 import 'package:xtalk_20260218/slides/cost_estimation_slide.dart';
 import 'package:xtalk_20260218/slides/interactive_chat_slide.dart';
+import 'package:xtalk_20260218/slides/intro_slide.dart';
 import 'package:xtalk_20260218/slides/problem_slide.dart';
 import 'package:xtalk_20260218/slides/summary_slide.dart';
 import 'package:xtalk_20260218/slides/technical_flow_slide.dart';
@@ -31,6 +32,7 @@ class PresentationApp extends StatelessWidget {
       ),
       slides: const [
         TitleSlide(),
+        IntroSlide(),
         ProblemSlide(),
         TechnicalFlowSlide(),
         CostEstimationSlide(),
