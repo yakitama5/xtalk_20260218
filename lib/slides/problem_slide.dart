@@ -12,6 +12,15 @@ class ProblemSlide extends FlutterDeckSlideWidget {
           route: '/problem',
           title: 'Problem',
           steps: 3, // アニメーションステップを3に変更
+          speakerNotes: '''
+まずこちらをご覧下さい。
+
+こちらの画面は顧客から提供されたFigmaのデザインです。
+よくある一覧系の管理画面ですね。
+
+しかし、この画面を確認すると、ある懸念が浮かび上がります。
+それが、この「Statusのソート」と「ページネーション」の組み合わせです。
+''',
         ),
       );
 

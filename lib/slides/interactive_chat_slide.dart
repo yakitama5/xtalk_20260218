@@ -29,6 +29,28 @@ class _InteractiveChatSlideState extends State<InteractiveChatSlide> {
         route: '/interactive-chat',
         title: 'Communication is Key',
         header: FlutterDeckHeaderConfiguration(title: 'Before Coding...'),
+        speakerNotes: '''
+ここでふと立ち返ります。
+「本当にこの機能必要か？」と。
+
+業務ルールで決まっているいくつかのステータス変遷に対して「ソートしたい！」というニーズはあまり思い浮かびません。
+あるとしたら「完了だけ見たい」といった「絞り込み」の方でしょう。
+
+ここはひとつ聞いてみましょう！
+チャットで顧客に連絡してみます。
+
+（チャットを打つ）
+（送信ボタンを押す）
+（待ち時間は適当に話す）
+
+……来ました！
+「コピペだから消していいよ」とのことです。
+結果的に機能は不要、コストは0円になりました。
+
+補足ですが、
+実際の現場では「ソートではなく、絞り込みが必要」という結末でしたが、
+違う形で実装されそうだったニーズを、正しい形に修正出来たのでよかったです。
+''',
       ),
       builder: (context) {
         return Stack(

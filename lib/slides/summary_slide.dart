@@ -12,6 +12,19 @@ class SummarySlide extends FlutterDeckSlideWidget {
           title: 'Summary',
           steps: 4,
           header: FlutterDeckHeaderConfiguration(title: 'Takeaway'),
+          speakerNotes: '''
+最後にまとめです。
+
+コードを書く前に「なぜ？」と考えることは大事です。
+デザインツール上の絵が全てではなく、その裏にある要求を理解することが重要です。
+
+また、違和感は会話のチャンスなので、すぐに会話しましょう。
+結末が変わらなかったとしても、その過程で理解が深まり、より良いシステムになります。
+
+「作らない勇気」を持つことが、システムと私たちの残業時間を守ります。
+
+ご清聴ありがとうございました。
+''',
         ),
       );
 
@@ -44,7 +57,12 @@ class SummarySlide extends FlutterDeckSlideWidget {
                   const Gap(24),
                   _buildBullet(stepNumber, 3, "違和感 = 会話のチャンス"),
                   const Gap(24),
-                  _buildBullet(stepNumber, 4, "作らない勇気を持とう", isStrong: true),
+                  _buildBullet(
+                    stepNumber,
+                    4,
+                    "「作らない勇気」がシステムと私たちの残業時間を守ります",
+                    isStrong: true,
+                  ),
                 ],
               );
             },

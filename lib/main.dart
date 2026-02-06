@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_deck/flutter_deck.dart';
+import 'package:flutter_deck_web_client/flutter_deck_web_client.dart';
 import 'package:xtalk_20260218/config/theme.dart';
 import 'package:xtalk_20260218/slides/cost_estimation_slide.dart';
 import 'package:xtalk_20260218/slides/interactive_chat_slide.dart';
@@ -19,6 +20,8 @@ class PresentationApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterDeckApp(
+      isPresenterView: true,
+      client: FlutterDeckWebClient(),
       configuration: const FlutterDeckConfiguration(
         background: FlutterDeckBackgroundConfiguration(
           light: FlutterDeckBackground.solid(PresentationTheme.backgroundColor),
@@ -27,6 +30,7 @@ class PresentationApp extends StatelessWidget {
         footer: FlutterDeckFooterConfiguration(
           showSlideNumbers: true,
           showSocialHandle: true,
+          showFooter: true,
         ),
         showProgress: false,
       ),

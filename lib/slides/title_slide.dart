@@ -11,6 +11,13 @@ class TitleSlide extends FlutterDeckSlideWidget {
           route: '/title',
           title: 'Title',
           footer: FlutterDeckFooterConfiguration(showSlideNumbers: false),
+          speakerNotes: '''
+皆さんこんにちは。
+
+本日は「その矢印アイコン、実装コストは100万円です」というタイトルでお話しします。
+
+実体験を少しオーバーにしているので、一部フィクションだと思ってエンタメとして聞いていただければと思います。
+''',
         ),
       );
 

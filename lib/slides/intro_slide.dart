@@ -11,6 +11,15 @@ class IntroSlide extends FlutterDeckSlideWidget {
           route: '/intro',
           title: 'Introduction',
           header: FlutterDeckHeaderConfiguration(title: 'Who am I?'),
+          speakerNotes: '''
+最初に軽く自己紹介をさせて下さい。
+「やくらん」というハンドルネームで活動しており、ピープルソフトウェア株式会社に所属しています。
+
+技術スタックには個人的に好きなFlutterを記載していますが、本業はWebエンジニアとして働いています。
+この後の懇親会でも、Flutterの話やWebの話ができたら嬉しいです。
+
+よろしくお願いします。
+''',
         ),
       );
 

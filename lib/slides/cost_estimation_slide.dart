@@ -12,6 +12,14 @@ class CostEstimationSlide extends FlutterDeckSlideWidget {
           title: 'Cost Estimation',
           steps: 3,
           header: FlutterDeckHeaderConfiguration(title: '実装オプションとコスト'),
+          speakerNotes: '''
+根性でどうにかするのは現実的ではないので、いくつかのプランが浮かび上がります。
+
+登録時の計算結果を物理カラムに保存する？既存データはバッチで？
+あるいは検索エンジンの導入？
+
+しかし、たかがソート機能一つのために、どれも初期構築や保守に数十万〜百万円単位の大きなコストがかかります。
+''',
         ),
       );
 
