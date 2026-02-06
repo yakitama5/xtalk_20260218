@@ -19,7 +19,7 @@ class ProcessFlowWidget extends StatelessWidget {
               icon: Icons.storage,
               title: 'Database',
               subtitle: '1,000,000 Records',
-              color: Colors.blueGrey,
+              color: PresentationTheme.primaryDarkColor,
             ),
             _buildArrow(),
 
@@ -28,7 +28,7 @@ class ProcessFlowWidget extends StatelessWidget {
               title: '全件フェッチ & メモリ内計算',
               subtitle: 'computed_status = ...',
               color: PresentationTheme.warningColor,
-              textColor: Colors.white,
+              textColor: PresentationTheme.textColor,
               icon: Icons.memory,
             ),
             _buildArrow(),
@@ -37,8 +37,8 @@ class ProcessFlowWidget extends StatelessWidget {
             _buildCard(
               title: 'ソート & 10件抽出',
               subtitle: '.sort(...).take(10)',
-              color: Colors.orange, // Warning color equivalent
-              textColor: Colors.white,
+              color: PresentationTheme.warningColor,
+              textColor: PresentationTheme.textColor,
               icon: Icons.sort,
             ),
             _buildArrow(),
@@ -65,10 +65,10 @@ class ProcessFlowWidget extends StatelessWidget {
                   const Gap(16),
                   Text(
                     'Time Out / High Load',
-                    style: GoogleFonts.notoSansJp(
+                    style: GoogleFonts.kiwiMaru(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: PresentationTheme.warningColor,
+                      color: PresentationTheme.warningDarkColor,
                     ),
                   ),
                 ],
@@ -92,14 +92,14 @@ class ProcessFlowWidget extends StatelessWidget {
         const Gap(8),
         Text(
           title,
-          style: GoogleFonts.notoSansJp(
+          style: GoogleFonts.kiwiMaru(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
           subtitle,
-          style: GoogleFonts.roboto(fontSize: 16, color: Colors.grey),
+          style: GoogleFonts.kiwiMaru(fontSize: 16, color: Colors.grey),
         ),
       ],
     );
@@ -136,7 +136,7 @@ class ProcessFlowWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: GoogleFonts.notoSansJp(
+                style: GoogleFonts.kiwiMaru(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: textColor,

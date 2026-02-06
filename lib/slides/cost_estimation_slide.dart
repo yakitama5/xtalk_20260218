@@ -43,7 +43,7 @@ class CostEstimationSlide extends FlutterDeckSlideWidget {
                         subTitle: '全件取得＆メモリ計算',
                         price: 'Priceless',
                         icon: Icons.dangerous,
-                        color: PresentationTheme.warningColor,
+                        color: PresentationTheme.warningDarkColor,
                       ),
                     ),
                   ),

@@ -43,9 +43,9 @@ class PresentationApp extends StatelessWidget {
         InteractiveChatSlide(),
         SummarySlide(),
       ],
-      lightTheme: PresentationTheme.darkTheme,
+      lightTheme: PresentationTheme.lightTheme,
       darkTheme: PresentationTheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
     );
   }
 }

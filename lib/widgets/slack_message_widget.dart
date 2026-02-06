@@ -24,7 +24,7 @@ class SlackMessageWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         child: Text(
           '入力中...',
-          style: GoogleFonts.notoSansJp(color: Colors.grey, fontSize: 14),
+          style: GoogleFonts.kiwiMaru(color: Colors.grey, fontSize: 14),
         ),
       );
     }
@@ -59,7 +59,7 @@ class SlackMessageWidget extends StatelessWidget {
                   children: [
                     Text(
                       isMe ? 'Me' : 'Product Manager',
-                      style: GoogleFonts.notoSansJp(
+                      style: GoogleFonts.kiwiMaru(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                         color: Colors.black87,
@@ -68,7 +68,7 @@ class SlackMessageWidget extends StatelessWidget {
                     const Gap(8),
                     Text(
                       '10:23 AM',
-                      style: GoogleFonts.roboto(
+                      style: GoogleFonts.kiwiMaru(
                         fontSize: 14,
                         color: Colors.grey[600],
                       ),
@@ -78,7 +78,7 @@ class SlackMessageWidget extends StatelessWidget {
                 const Gap(6),
                 Text(
                   text,
-                  style: GoogleFonts.notoSansJp(
+                  style: GoogleFonts.kiwiMaru(
                     fontSize: 18,
                     color: Colors.black87,
                     height: 1.4,

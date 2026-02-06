@@ -50,9 +50,9 @@ class TitleSlide extends FlutterDeckSlideWidget {
                     // 要件2.1
                     Text(
                       'その矢印アイコン、\n実装コストは100万円です',
-                      style: GoogleFonts.notoSansJp(
+                      style: GoogleFonts.kiwiMaru(
                         fontSize: 64,
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.bold,
                         height: 1.2,
                         color: PresentationTheme.textColor,
                       ),
@@ -61,7 +61,7 @@ class TitleSlide extends FlutterDeckSlideWidget {
                     // 要件2.2
                     Text(
                       'ユーザーニーズのない機能に全力投球しないために',
-                      style: GoogleFonts.notoSansJp(
+                      style: GoogleFonts.kiwiMaru(
                         fontSize: 32,
                         fontWeight: FontWeight.w500,
                         color: PresentationTheme.secondaryTextColor,
@@ -89,15 +89,15 @@ class TitleSlide extends FlutterDeckSlideWidget {
                         children: [
                           const Icon(
                             Icons.person,
-                            color: PresentationTheme.primaryColor,
+                            color: PresentationTheme.primaryDarkColor,
                           ),
                           const Gap(12),
                           Text(
                             'やくらん',
-                            style: GoogleFonts.notoSansJp(
+                            style: GoogleFonts.kiwiMaru(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: PresentationTheme.primaryColor,
+                              color: PresentationTheme.primaryDarkColor,
                             ),
                           ),
                         ],

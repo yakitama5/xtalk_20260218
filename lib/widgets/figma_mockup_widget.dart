@@ -80,7 +80,7 @@ class FigmaMockupWidget extends StatelessWidget {
               children: [
                 Text(
                   '1-10 of 1,000,000',
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.kiwiMaru(
                     color: Colors.grey[700],
                     fontSize: 14,
                   ),
@@ -134,7 +134,7 @@ class FigmaMockupWidget extends StatelessWidget {
     Color? textColor,
     FontWeight? fontWeight,
   }) {
-    final style = GoogleFonts.roboto(
+    final style = GoogleFonts.kiwiMaru(
       color: textColor ?? (isHeader ? Colors.grey[800] : Colors.black87),
       fontWeight:
           fontWeight ?? (isHeader ? FontWeight.bold : FontWeight.normal),

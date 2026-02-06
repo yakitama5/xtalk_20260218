@@ -42,7 +42,10 @@ class ProblemSlide extends FlutterDeckSlideWidget {
                   Row(
                     children: [
                       Expanded(flex: 5, child: Container()),
-                      const VerticalDivider(color: Colors.white24, width: 1),
+                      const VerticalDivider(
+                        color: PresentationTheme.secondaryTextColor,
+                        width: 1,
+                      ),
                       Expanded(flex: 4, child: Container()),
                     ],
                   ),
@@ -83,10 +86,10 @@ class ProblemSlide extends FlutterDeckSlideWidget {
                         children: [
                           Text(
                             'よくあるUI仕様',
-                            style: GoogleFonts.notoSansJp(
+                            style: GoogleFonts.kiwiMaru(
                               fontSize: 36,
                               fontWeight: FontWeight.bold,
-                              color: PresentationTheme.primaryColor,
+                              color: PresentationTheme.primaryDarkColor,
                             ),
                           ),
                           const Gap(32),
@@ -109,10 +112,10 @@ class ProblemSlide extends FlutterDeckSlideWidget {
                               padding: const EdgeInsets.all(24),
                               decoration: BoxDecoration(
                                 color: PresentationTheme.warningColor
-                                    .withValues(alpha: 0.1),
+                                    .withValues(alpha: 0.2),
                                 border: const Border(
                                   left: BorderSide(
-                                    color: PresentationTheme.warningColor,
+                                    color: PresentationTheme.warningDarkColor,
                                     width: 4,
                                   ),
                                 ),
@@ -124,15 +127,17 @@ class ProblemSlide extends FlutterDeckSlideWidget {
                                     children: [
                                       const Icon(
                                         Icons.warning_amber,
-                                        color: PresentationTheme.warningColor,
+                                        color:
+                                            PresentationTheme.warningDarkColor,
                                       ),
                                       const Gap(12),
                                       Text(
                                         '隠されたコスト',
-                                        style: GoogleFonts.notoSansJp(
+                                        style: GoogleFonts.kiwiMaru(
                                           fontSize: 24,
                                           fontWeight: FontWeight.bold,
-                                          color: PresentationTheme.warningColor,
+                                          color: PresentationTheme
+                                              .warningDarkColor,
                                         ),
                                       ),
                                     ],
@@ -140,7 +145,7 @@ class ProblemSlide extends FlutterDeckSlideWidget {
                                   const Gap(16),
                                   Text(
                                     'Statusは計算フィールド...\nDBインデックスが効かない！？',
-                                    style: GoogleFonts.notoSansJp(
+                                    style: GoogleFonts.kiwiMaru(
                                       fontSize: 20,
                                       height: 1.5,
                                     ),
@@ -182,7 +187,7 @@ class ProblemSlide extends FlutterDeckSlideWidget {
           ),
           const Gap(8),
           Expanded(
-            child: Text(text, style: GoogleFonts.notoSansJp(fontSize: 24)),
+            child: Text(text, style: GoogleFonts.kiwiMaru(fontSize: 24)),
           ),
         ],
       ),

@@ -63,11 +63,13 @@ class _AnimatedStampWidgetState extends State<AnimatedStampWidget>
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: PresentationTheme.successColor,
+                    color: PresentationTheme.successDarkColor,
                     width: 8,
                   ),
                   borderRadius: BorderRadius.circular(16),
-                  color: PresentationTheme.successColor.withValues(alpha: 0.1),
+                  color: PresentationTheme.successDarkColor.withValues(
+                    alpha: 0.2,
+                  ),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -76,7 +78,7 @@ class _AnimatedStampWidgetState extends State<AnimatedStampWidget>
                       'Cost',
                       style: GoogleFonts.blackOpsOne(
                         fontSize: 24,
-                        color: PresentationTheme.successColor,
+                        color: PresentationTheme.successDarkColor,
                         height: 1.0,
                       ),
                     ),
@@ -84,7 +86,7 @@ class _AnimatedStampWidgetState extends State<AnimatedStampWidget>
                       '¥0',
                       style: GoogleFonts.blackOpsOne(
                         fontSize: 64,
-                        color: PresentationTheme.successColor,
+                        color: PresentationTheme.successDarkColor,
                         height: 1.0,
                       ),
                     ),

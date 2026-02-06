@@ -82,10 +82,10 @@ class IntroSlide extends FlutterDeckSlideWidget {
             children: [
               Text(
                 'やくらん (@yakuran1)',
-                style: GoogleFonts.notoSansJp(
+                style: GoogleFonts.kiwiMaru(
                   fontSize: 64,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: PresentationTheme.textColor,
                 ),
               ),
               const SizedBox(height: 16),
@@ -95,14 +95,14 @@ class IntroSlide extends FlutterDeckSlideWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: PresentationTheme.primaryColor.withValues(alpha: 0.2),
+                  color: PresentationTheme.primaryColor.withValues(alpha: 0.4),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
                   'Software Engineer',
-                  style: GoogleFonts.notoSansJp(
+                  style: GoogleFonts.kiwiMaru(
                     fontSize: 24,
-                    color: PresentationTheme.primaryColor,
+                    color: PresentationTheme.primaryDarkColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -123,11 +123,14 @@ class IntroSlide extends FlutterDeckSlideWidget {
   Widget _buildInfoRow(IconData icon, String text) {
     return Row(
       children: [
-        Icon(icon, color: PresentationTheme.primaryColor, size: 28),
+        Icon(icon, color: PresentationTheme.primaryDarkColor, size: 28),
         const SizedBox(width: 20),
         Text(
           text,
-          style: GoogleFonts.notoSansJp(fontSize: 28, color: Colors.white),
+          style: GoogleFonts.kiwiMaru(
+            fontSize: 28,
+            color: PresentationTheme.textColor,
+          ),
         ),
       ],
     );
@@ -159,7 +162,7 @@ class IntroSlide extends FlutterDeckSlideWidget {
         const SizedBox(height: 12),
         Text(
           label,
-          style: GoogleFonts.notoSansJp(
+          style: GoogleFonts.kiwiMaru(
             fontSize: 14,
             fontWeight: FontWeight.bold,
             color: PresentationTheme.secondaryTextColor,

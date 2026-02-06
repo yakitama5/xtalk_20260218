@@ -69,40 +69,55 @@ class _InteractiveChatSlideState extends State<InteractiveChatSlide> {
                       children: [
                         Text(
                           'その機能、\n本当に必要ですか？',
-                          style: GoogleFonts.notoSansJp(
+                          style: GoogleFonts.kiwiMaru(
                             fontSize: 48,
                             fontWeight: FontWeight.bold,
-                            color: PresentationTheme.primaryColor,
+                            color: PresentationTheme.primaryDarkColor,
                             height: 1.2,
                           ),
                         ),
                         const SizedBox(height: 32),
                         Text(
                           '実装する前に\nチャット一本で解決するかも...？',
-                          style: GoogleFonts.notoSansJp(
+                          style: GoogleFonts.kiwiMaru(
                             fontSize: 28,
-                            color: Colors.white,
+                            color: PresentationTheme.textColor,
                             height: 1.5,
                           ),
                         ),
                         const SizedBox(height: 32),
                         Container(
-                          padding: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 16,
+                          ),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(8),
+                            color: PresentationTheme.primaryColor.withValues(
+                              alpha: 0.2,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: Colors.white.withOpacity(0.2),
+                              color: PresentationTheme.primaryColor.withValues(
+                                alpha: 0.4,
+                              ),
+                              width: 2,
                             ),
                           ),
                           child: Row(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(Icons.touch_app, color: Colors.white),
-                              const SizedBox(width: 8),
+                              const Icon(
+                                Icons.touch_app,
+                                color: PresentationTheme.primaryDarkColor,
+                                size: 32,
+                              ),
+                              const SizedBox(width: 16),
                               Text(
                                 '右の画面でメッセージを送ってみよう 👉',
-                                style: GoogleFonts.notoSansJp(
-                                  color: Colors.white,
+                                style: GoogleFonts.kiwiMaru(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: PresentationTheme.textColor,
                                 ),
                               ),
                             ],
@@ -140,7 +155,7 @@ class _InteractiveChatSlideState extends State<InteractiveChatSlide> {
         const SizedBox(width: 16),
         Text(
           text,
-          style: GoogleFonts.notoSansJp(
+          style: GoogleFonts.kiwiMaru(
             fontSize: 24,
             fontWeight: FontWeight.w500,
           ),
@@ -275,7 +290,7 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
                     children: [
                       Text(
                         '# project-x-design',
-                        style: GoogleFonts.notoSansJp(
+                        style: GoogleFonts.kiwiMaru(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -329,7 +344,7 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
                     controller: _textController,
                     decoration: InputDecoration(
                       hintText: 'Message #project-x-design',
-                      hintStyle: GoogleFonts.roboto(
+                      hintStyle: GoogleFonts.kiwiMaru(
                         color: Colors.grey,
                         fontSize: 18,
                       ),
@@ -343,7 +358,10 @@ class _InteractiveChatDemoState extends State<InteractiveChatDemo> {
                       ),
                       isDense: true,
                     ),
-                    style: const TextStyle(color: Colors.black, fontSize: 18),
+                    style: GoogleFonts.kiwiMaru(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
                     onSubmitted: (_) => _handleSend(),
                   ),
                 ),

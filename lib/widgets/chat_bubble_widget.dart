@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:xtalk_20260218/config/theme.dart';
 
 class ChatBubbleWidget extends StatelessWidget {
   final String text;
@@ -23,9 +22,7 @@ class ChatBubbleWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         constraints: const BoxConstraints(maxWidth: 600),
         decoration: BoxDecoration(
-          color: isMe
-              ? PresentationTheme.primaryColor
-              : const Color(0xFF424242),
+          color: isMe ? const Color(0xFF1976D2) : const Color(0xFF424242),
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(20),
             topRight: const Radius.circular(20),
@@ -44,7 +41,7 @@ class ChatBubbleWidget extends StatelessWidget {
             ? _buildTypingIndicator()
             : Text(
                 text,
-                style: GoogleFonts.notoSansJp(
+                style: GoogleFonts.kiwiMaru(
                   fontSize: 18,
                   color: Colors.white,
                   height: 1.4,

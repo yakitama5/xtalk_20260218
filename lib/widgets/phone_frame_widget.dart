@@ -13,7 +13,7 @@ class PhoneFrameWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.circular(48),
-        border: Border.all(color: const Color(0xFF333333), width: 10),
+        border: Border.all(color: const Color(0xFFB0BEC5), width: 10),
         boxShadow: const [
           BoxShadow(
             color: Colors.black45,
