@@ -1,11 +1,22 @@
-# 実装計画 - コスト0スタンプの視認性向上
+# 実装計画 - InteractiveChatSlide のリファクタリング
 
-インタラクティブチャットスライドの最後に表示される「Cost ¥0」スタンプの視認性を高めるための調整を行います。
+## 概要
 
-## 修正内容
+`InteractiveChatSlide` を `FlutterDeckSlideWidget` を継承するように変更し、スライドのタイトルやヘッダーが表示されるようにします。また、状態管理を適切に分離します。
 
-### 1. スタンプウィジェット (AnimatedStampWidget) の配色調整
+## 変更内容
 
-- スタンプの境界線と文字色を `successColor` から、よりコントラストの高い `successDarkColor` に変更します。
-- 背景の塗りつぶし色の不透明度を 10% から 20% に上げ、枠組みをよりはっきりとさせます。
-- これにより、パステル調の背景の上でも「コストがゼロになった」という重要なメッセージが強く印象に残るようにします。
+1. `InteractiveChatSlide` の変更
+   - `StatefulWidget` -> `FlutterDeckSlideWidget` への継承変更。
+   - `configuration` の定義。
+   - `build` メソッドで `_InteractiveChatContent` を呼び出すように変更。
+2. `_InteractiveChatContent` の作成
+   - 既存の `InteractiveChatSlide` が持っていた状態（`_showStamp`）と UI ロジックをここに移動。
+3. `InteractiveChatDemo` との連携
+   - 完了時の `onSequenceComplete` コールバックを `_InteractiveChatContent` で受け取り、スタンプを表示。
+
+## 完了条件
+
+- [x] `FlutterDeckSlideWidget` を継承していること。
+- [x] スライド設定（タイトル、ヘッダー、スピーカーノート）が反映されること。
+- [x] チャットシーケンス完了後にスタンプが表示されること。

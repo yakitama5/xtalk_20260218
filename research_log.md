@@ -1,26 +1,18 @@
-# 考察中のログ (Research Log)
+# 考察ログ - InteractiveChatSlide のリファクタリング
 
-## ディレクトリ構造に関する調査と決定
+## 現状の分析
 
-### 調査内容
+- `lib/slides/interactive_chat_slide.dart` が `StatefulWidget` を直接継承しており、`FlutterDeck` のタイトルやヘッダーが正しく設定されていない。
+- スライド内で「スタンプを表示する」という状態管理（`_showStamp`）が必要。
 
-`GEMINI.md` には `melos` を使用したモノレポ構成（`apps/` ディレクトリを含む）が標準であるとの記載がありましたが、提供された環境のルートディレクトリを確認したところ、以下のような状態でした。
+## 解決策の検討
 
-- ルートディレクトリ直下に `lib/`, `web/`, `windows/` などが存在
-- `pubspec.yaml` にワークスペース設定 (`workspace:`) が含まれていない
+1. `InteractiveChatSlide` を `FlutterDeckSlideWidget` に変更する。
+2. スライドの構成（`FlutterDeckSlideConfiguration`）をコンストラクタで定義し、タイトルやヘッダーを有効にする。
+3. `FlutterDeckSlideWidget.build` メソッド内で `FlutterDeckSlide.custom` を使用する。
+4. 状態管理が必要なメインコンテンツ部分を `_InteractiveChatContent`（`StatefulWidget`）として分離し、カプセル化する。
 
-### 決定事項
+## 実装のポイント
 
-ガイドラインと実際のディレクトリ構造に乖離がありましたが、このリポジトリ自体が `xtalk_20260218` という特定のイベント用プレゼンテーションリポジトリとして作成されていると判断しました。
-そのため、無理に `apps/` ディレクトリを作成して階層を深くするのではなく、ルートディレクトリをそのままFlutterアプリケーションのルートとして使用する方針を採用しました。
-
-これにより、以下のメリットがあります：
-
-- 環境構築の手順が簡略化される
-- ユーザーが直感的にコードを編集できる
-
-### Flutter Deckの採用
-
-要件定義書に従い、`flutter_deck` パッケージを採用しました。
-各スライドをウィジェットとして実装し、`main.dart` でリスト化して管理する構成としました。
-アニメーションに関しては、`flutter_deck` 標準のステップ機能 (`FlutterDeckSlideStepsBuilder`) と、Flutter標準の `AnimatedOpacity`, `AnimatedSlide` などを組み合わせて要件を満たしました。
+- `FlutterDeckSlideWidget` はイミュータブルであるべきなので、状態を持つ箇所を別ウィジェットに切り出すのがベストプラクティス。
+- `InteractiveChatDemo`（チャットのシミュレーター）は既存のまま利用し、完了時のコールバックでスタンプを表示させる。

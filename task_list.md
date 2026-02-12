@@ -1,21 +1,6 @@
-# タスクリスト - デザイン刷新 (パステル & Kiwimaru)
+# タスクリスト
 
-- [x] 実装計画の作成
-- [x] `lib/config/theme.dart` のテーマ更新 (パステルカラー & Kiwimaru設定)
-- [x] `lib/main.dart` のテーマモード変更 (Light Mode化)
-- [x] ウィジェットのフォント・配色更新
-  - [x] `SlackMessageWidget`
-  - [x] `ProcessFlowWidget`
-  - [x] `CostCardWidget`
-  - [x] `ChatBubbleWidget`
-  - [x] `FigmaMockupWidget`
-  - [x] `PhoneFrameWidget`
-- [x] 各スライドのフォント・配色更新
-  - [x] `TitleSlide`
-  - [x] `IntroSlide`
-  - [x] `ProblemSlide`
-  - [x] `TechnicalFlowSlide` (ウィジェット経由で更新済み)
-  - [x] `CostEstimationSlide` (ウィジェット経由で更新済み)
-  - [x] `InteractiveChatSlide`
-  - [x] `SummarySlide`
-- [x] 修正内容の確認 (walkthrough.md作成)
+- [x] `InteractiveChatSlide` の構成変更（`FlutterDeckSlideWidget` 継承）
+- [x] 状態管理用の内部ウィジェット `_InteractiveChatContent` への抽出
+- [x] スピーカーノートやヘッダー設定の移行
+- [x] 動作確認（ユーザー様にて実施予定）
