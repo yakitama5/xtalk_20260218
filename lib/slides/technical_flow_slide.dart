@@ -10,7 +10,7 @@ class TechnicalFlowSlide extends FlutterDeckSlideWidget {
           title: 'Technical Flow',
           header: FlutterDeckHeaderConfiguration(title: '技術的な裏側'),
           speakerNotes: '''
-なぜその指定が難しいのか、技術的な裏側を説明します。
+なぜこの機能が難しいのか、技術的な裏側を説明します。
 
 このシステムではStatus列に表示している内容を、他テーブルを参照してバックエンドの業務ロジックで算出しています。
 そのため、愚直に行うとDBのインデックスが使えず、ソートのためだけに毎回、全件走査と計算が発生してしまいます。

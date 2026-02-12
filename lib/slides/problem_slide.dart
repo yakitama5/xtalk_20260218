@@ -15,10 +15,13 @@ class ProblemSlide extends FlutterDeckSlideWidget {
           speakerNotes: '''
 まずこちらをご覧下さい。
 
+(Goto2)
 こちらの画面は顧客から提供されたFigmaのデザインです。
 よくある一覧系の管理画面ですね。
 
 しかし、この画面を確認すると、ある懸念が浮かび上がります。
+
+(Goto3)
 それが、この「Statusのソート」と「ページネーション」の組み合わせです。
 ''',
         ),

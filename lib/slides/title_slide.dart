@@ -12,7 +12,7 @@ class TitleSlide extends FlutterDeckSlideWidget {
           title: 'Title',
           footer: FlutterDeckFooterConfiguration(showSlideNumbers: false),
           speakerNotes: '''
-皆さんこんにちは。
+皆さん、お疲れ様です。
 
 本日は「その矢印アイコン、実装コストは100万円です」というタイトルでお話しします。
 
