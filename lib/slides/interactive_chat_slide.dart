@@ -6,30 +6,14 @@ import 'package:xtalk_20260218/widgets/animated_stamp_widget.dart';
 import 'package:xtalk_20260218/widgets/phone_frame_widget.dart';
 import 'package:xtalk_20260218/widgets/slack_message_widget.dart';
 
-class InteractiveChatSlide extends StatefulWidget {
-  const InteractiveChatSlide({super.key});
-
-  @override
-  State<InteractiveChatSlide> createState() => _InteractiveChatSlideState();
-}
-
-class _InteractiveChatSlideState extends State<InteractiveChatSlide> {
-  bool _showStamp = false;
-
-  void _onChatSequenceComplete() {
-    setState(() {
-      _showStamp = true;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return FlutterDeckSlide.custom(
-      configuration: const FlutterDeckSlideConfiguration(
-        route: '/interactive-chat',
-        title: 'Communication is Key',
-        header: FlutterDeckHeaderConfiguration(title: 'Before Coding...'),
-        speakerNotes: '''
+class InteractiveChatSlide extends FlutterDeckSlideWidget {
+  const InteractiveChatSlide({super.key})
+    : super(
+        configuration: const FlutterDeckSlideConfiguration(
+          route: '/interactive-chat',
+          title: 'Communication is Key',
+          header: FlutterDeckHeaderConfiguration(title: 'Before Coding...'),
+          speakerNotes: '''
 ここでふと立ち返ります。
 「本当にこの機能必要か？」と。
 
@@ -51,115 +35,125 @@ class _InteractiveChatSlideState extends State<InteractiveChatSlide> {
 実際の現場では「ソートではなく、絞り込みが必要」という結末でしたが、
 違う形で実装されそうだったニーズを、正しい形に修正出来たのでよかったです。
 ''',
-      ),
-      builder: (context) {
-        return Stack(
-          children: [
-            // Main Content (Split Layout)
-            Row(
-              children: [
-                // Left Side
-                Expanded(
-                  flex: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'その機能、\n本当に必要ですか？',
-                          style: GoogleFonts.kiwiMaru(
-                            fontSize: 48,
-                            fontWeight: FontWeight.bold,
-                            color: PresentationTheme.primaryDarkColor,
-                            height: 1.2,
-                          ),
-                        ),
-                        const SizedBox(height: 32),
-                        Text(
-                          '実装する前に\nチャット一本で解決するかも...？',
-                          style: GoogleFonts.kiwiMaru(
-                            fontSize: 28,
-                            color: PresentationTheme.textColor,
-                            height: 1.5,
-                          ),
-                        ),
-                        const SizedBox(height: 32),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 16,
-                          ),
-                          decoration: BoxDecoration(
-                            color: PresentationTheme.primaryColor.withValues(
-                              alpha: 0.2,
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: PresentationTheme.primaryColor.withValues(
-                                alpha: 0.4,
-                              ),
-                              width: 2,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.touch_app,
-                                color: PresentationTheme.primaryDarkColor,
-                                size: 32,
-                              ),
-                              const SizedBox(width: 16),
-                              Text(
-                                '右の画面でメッセージを送ってみよう 👉',
-                                style: GoogleFonts.kiwiMaru(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: PresentationTheme.textColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                // Right Side
-                Expanded(
-                  flex: 6,
-                  child: Center(
-                    child: PhoneFrameWidget(
-                      child: InteractiveChatDemo(
-                        onSequenceComplete: _onChatSequenceComplete,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            // Global Stamp Overlay
-            if (_showStamp) const Center(child: AnimatedStampWidget()),
-          ],
-        );
-      },
+        ),
+      );
+
+  @override
+  FlutterDeckSlide build(BuildContext context) {
+    return FlutterDeckSlide.custom(
+      builder: (context) => const _InteractiveChatContent(),
     );
   }
+}
 
-  Widget _buildFeatureRow(IconData icon, String text) {
-    return Row(
+class _InteractiveChatContent extends StatefulWidget {
+  const _InteractiveChatContent();
+
+  @override
+  State<_InteractiveChatContent> createState() =>
+      _InteractiveChatContentState();
+}
+
+class _InteractiveChatContentState extends State<_InteractiveChatContent> {
+  bool _showStamp = false;
+
+  void _onChatSequenceComplete() {
+    setState(() {
+      _showStamp = true;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
       children: [
-        Icon(icon, color: PresentationTheme.successColor, size: 32),
-        const SizedBox(width: 16),
-        Text(
-          text,
-          style: GoogleFonts.kiwiMaru(
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
-          ),
+        // Main Content (Split Layout)
+        Row(
+          children: [
+            // Left Side
+            Expanded(
+              flex: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'その機能、\n本当に必要ですか？',
+                      style: GoogleFonts.kiwiMaru(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: PresentationTheme.primaryDarkColor,
+                        height: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+                    Text(
+                      '実装する前に\nチャット一本で解決するかも...？',
+                      style: GoogleFonts.kiwiMaru(
+                        fontSize: 28,
+                        color: PresentationTheme.textColor,
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 16,
+                      ),
+                      decoration: BoxDecoration(
+                        color: PresentationTheme.primaryColor.withValues(
+                          alpha: 0.2,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: PresentationTheme.primaryColor.withValues(
+                            alpha: 0.4,
+                          ),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.touch_app,
+                            color: PresentationTheme.primaryDarkColor,
+                            size: 32,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            '右の画面でメッセージを送ってみよう 👉',
+                            style: GoogleFonts.kiwiMaru(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: PresentationTheme.textColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Right Side
+            Expanded(
+              flex: 6,
+              child: Center(
+                child: PhoneFrameWidget(
+                  child: InteractiveChatDemo(
+                    onSequenceComplete: _onChatSequenceComplete,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
+        // Global Stamp Overlay
+        if (_showStamp) const Center(child: AnimatedStampWidget()),
       ],
     );
   }
